@@ -1,0 +1,99 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap css file -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- bootstrap javascript min file  -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- jquery min file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- dynamic countdown clock -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Countdown Clock</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h1 class="text-center" id="days"></h1>
+                                        <h3 class="text-center">Days</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h1 class="text-center" id="hours"></h1>
+                                        <h3 class="text-center">Hours</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h1 class="text-center" id="minutes"></h1>
+                                        <h3 class="text-center">Minutes</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h1 class="text-center" id="seconds"></h1>
+                                        <h3 class="text-center">Seconds</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- jquery code -->
+    <script>
+        // set the date we're counting down to
+        var countDownDate = new Date("Dec 31, 2022 23:59:59").getTime();
+
+        // update the count down every 1 second
+        var x = setInterval(function() {
+
+        // get today's date and time
+        var now = new Date().getTime();
+
+        // find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // output the result in an element with id="demo"
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+
+        // if the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+        }, 1000);  
+    </script>
+    
+</body>
+</html>
